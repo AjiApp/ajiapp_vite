@@ -1,0 +1,199 @@
+/* 
+   Enhanced Footer styling
+*/
+.aji-footer {
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  padding: 60px 30px 40px;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Add subtle pattern overlay */
+.aji-footer:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%),
+                    linear-gradient(225deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%),
+                    linear-gradient(315deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%),
+                    linear-gradient(45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%);
+  background-size: 40px 40px;
+  opacity: 0.5;
+}
+
+/* Logo container with enhanced styling */
+.footer-logo {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+/* Add decorative element below logo */
+.footer-logo:after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 2px;
+  
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.footer-logo img {
+  width: 90px;
+  height: auto;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.footer-logo img:hover {
+  transform: scale(1.05);
+}
+
+/* Content container with max width */
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Left side with email contact */
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+
+/* Email icon with enhanced styling */
+.email-icon {
+  width: 44px;
+  height: 44px;
+  margin-right: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.footer-left:hover .email-icon {
+  background-color: rgba(139, 24, 26, 0.8);
+  transform: scale(1.05);
+}
+
+/* Email text container */
+.email-text {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Email label styling */
+.email-label {
+  font-weight: bold;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Email link with hover effect */
+.email-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.email-link:hover {
+  color: #8B181A;
+}
+
+/* Right side text */
+.footer-right {
+  text-align: right;
+}
+
+/* Copyright text styling */
+.footer-right p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ========== TABLETTE (max-width: 768px) ========== */
+@media (max-width: 768px) {
+  .aji-footer {
+    padding: 50px 25px 30px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+  
+  .footer-left,
+  .footer-right {
+    text-align: center;
+  }
+  
+  .footer-logo {
+    margin-bottom: 40px;
+  }
+  
+  .footer-logo:after {
+    bottom: -15px;
+  }
+}
+
+/* ========== MOBILE (max-width: 480px) - Fixed incorrect value ========== */
+@media (max-width: 480px) {
+  .aji-footer {
+    padding: 40px 20px 25px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  .footer-logo {
+    margin-bottom: 30px;
+  }
+  
+  .footer-logo img {
+    width: 70px;
+  }
+  
+  .footer-content {
+    gap: 20px;
+  }
+  
+  .email-icon {
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+  }
+  
+  .email-label {
+    font-size: 0.8rem;
+  }
+  
+  .email-link {
+    font-size: 1rem;
+  }
+  
+  .footer-right p {
+    font-size: 0.8rem;
+  }
+}

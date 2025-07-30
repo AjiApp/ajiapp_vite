@@ -1,0 +1,223 @@
+/*
+  Services Slider Styles - Improved for better spacing and responsiveness
+*/
+
+.services-slider-wrapper {
+  padding: 5rem 0;
+  width: 100%;
+  overflow: hidden; /* Prevent horizontal overflow */
+}
+
+/* 
+  Container for title and slider
+*/
+.services-slider-container {
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+/* Section title */
+.services-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Added subtitle */
+.services-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 3rem;
+}
+
+/* Each slide */
+.service-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+  height: auto; /* Ensure consistent height */
+}
+
+/* Add hover effect */
+.service-slide:hover {
+  transform: translateY(-10px);
+}
+
+/* Service image */
+.service-image {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  margin-bottom: 1.2rem;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.08));
+}
+
+/* Added service title */
+.service-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+/* Better control slick slider behavior */
+.services-slider-container .slick-slider {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.services-slider-container .slick-list {
+  overflow: hidden;
+}
+
+.services-slider-container .slick-track {
+  display: flex;
+  align-items: stretch;
+}
+
+.services-slider-container .slick-slide {
+  height: auto; /* Ensure slides aren't collapsed */
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.services-slider-container .slick-slide.slick-active {
+  opacity: 1;
+}
+
+.services-slider-container .slick-slide > div {
+  height: 100%;
+}
+
+/* Make arrows more visible on mobile */
+.services-slider-container .slick-prev,
+.services-slider-container .slick-next {
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+}
+
+.services-slider-container .slick-prev:before,
+.services-slider-container .slick-next:before {
+  font-size: 24px;
+  color: #8B181A;
+  opacity: 0.8;
+}
+
+/* Custom styling for slick dots */
+.services-slider-container .slick-dots {
+  bottom: -40px;
+}
+
+.services-slider-container .slick-dots li {
+  margin: 0 6px;
+}
+
+.services-slider-container .slick-dots li button:before {
+  font-size: 12px;
+  color: #8B181A;
+  opacity: 0.3;
+}
+
+.services-slider-container .slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: #8B181A;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 992px) {
+  .services-slider-wrapper {
+    padding: 4rem 0;
+  }
+  
+  .services-title {
+    font-size: 2.4rem;
+  }
+  
+  .services-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Adjust width for better display in tablet */
+  .services-slider-container .slick-slide {
+    width: 50% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-slider-wrapper {
+    padding: 3rem 0;
+  }
+  
+  .services-title {
+    font-size: 2rem;
+  }
+  
+  .services-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .service-image {
+    max-width: 220px;
+  }
+  
+  .service-title {
+    font-size: 1.2rem;
+  }
+  
+  /* Fix for mobile view - show only one full slide */
+  .services-slider-container .slick-slider,
+  .services-slider-container .slick-list {
+    overflow: visible;
+  }
+  
+  .services-slider-container .slick-slide {
+    width: 100% !important; /* Force single slide view */
+    opacity: 1;
+  }
+  
+  /* Increase visibility of arrows on mobile */
+  .services-slider-container .slick-prev {
+    left: -10px;
+  }
+  
+  .services-slider-container .slick-next {
+    right: -10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-slider-wrapper {
+    padding: 2.5rem 0;
+  }
+  
+  .services-slider-container {
+    width: 95%;
+  }
+  
+  .services-title {
+    font-size: 1.8rem;
+  }
+  
+  .service-image {
+    max-width: 180px;
+  }
+  
+  /* Make dots more touchable on small screens */
+  .services-slider-container .slick-dots li {
+    margin: 0 8px;
+  }
+  
+  .services-slider-container .slick-dots li button:before {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,132 @@
+/* 
+  SECTION PRINCIPALE
+*/
+.why-aji-section {
+  padding: 4rem 1rem;
+  position: relative;
+  overflow: hidden; /* Prevent overflow from negative margins */
+}
+
+/* 
+  CONTENEUR INTERNE
+*/
+.why-aji-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* TITRE PRINCIPAL - reduced from 5rem to 3.5rem */
+.why-aji-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  display: inline-block;
+}
+
+/* Add underline effect to title */
+.why-aji-title:after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 3px;
+  background-color: #8B181A;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* SOUS-TITRE */
+.why-aji-subtitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+/* DESCRIPTION */
+.why-aji-subdesc {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 3rem; /* Increased bottom margin */
+  color: #666;
+}
+
+/* 
+  CONTENEUR DES IMAGES
+*/
+.phone-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* PHONE IMAGE - Remove extreme negative margins */
+.phone-image {
+  width: 100%;
+  max-width: 1000px; /* Reduced from 1000px */
+  height: auto;
+  margin-bottom: -5rem; /* Reduced from -10rem */
+  margin-top: -8rem; /* Reduced from -9rem */
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1)); /* Add subtle shadow */
+}
+
+/* ======================= MEDIA QUERIES ======================= */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .why-aji-section {
+    padding: 3rem 1rem;
+  }
+  
+  .why-aji-title {
+    font-size: 2.5rem;
+  }
+  
+  .why-aji-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .why-aji-subdesc {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .phone-image {
+    max-width: 500px;
+    margin-top: -2rem;
+    margin-bottom: -3rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .why-aji-section {
+    padding: 2rem 1rem;
+  }
+  
+  .why-aji-title {
+    font-size: 2rem;
+  }
+  
+  .why-aji-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .why-aji-subdesc {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .phone-image {
+    max-width: 360px;
+    margin-top: -1rem;
+    margin-bottom: -2rem;
+  }
+}

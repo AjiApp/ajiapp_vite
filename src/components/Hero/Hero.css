@@ -1,0 +1,197 @@
+/* src/components/Hero/Hero.css */
+
+.hero {
+  width: 100%;
+  padding: 6rem 0 4rem;
+  overflow-x: hidden;
+}
+
+/* hero-content uses flex for 2 columns */
+.hero-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* IMAGE COLUMN */
+.hero-image {
+  flex: 1 1 45%;
+  text-align: center;
+  position: relative;
+  max-width: 500px;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* TEXT COLUMN + BUTTONS */
+.hero-text {
+  flex: 1 1 45%;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align text to left but will be centered on mobile */
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 6.5rem;
+  line-height: 1.2;
+  color: #333;
+}
+
+.hero-text p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  margin-top: 20px;
+}
+
+/* Download buttons - enlarged and centered with text on mobile */
+.store-buttons {
+  display: flex;
+  gap: 2rem; /* Increased gap between buttons */
+  flex-wrap: wrap;
+  align-self: flex-start; /* Align with text on desktop */
+  
+}
+
+.store-buttons a {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.store-buttons a:hover {
+  transform: scale(1.05);
+}
+
+.store-buttons img {
+  width: 220px; /* Increased from 190px to make buttons larger */
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15)); /* Added shadow for better visibility */
+}
+
+/* Large screens */
+@media (min-width: 1400px) {
+  .hero-content {
+    max-width: 1400px;
+  }
+  
+  .hero-text h1 {
+    font-size: 4rem;
+  }
+  
+  .store-buttons img {
+    width: 240px; /* Even larger on big screens */
+  }
+}
+
+/* Medium screens */
+@media (max-width: 992px) {
+  .hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-text {
+    padding-right: 1rem;
+  }
+  
+  .store-buttons img {
+    width: 200px; /* Still fairly large on medium screens */
+  }
+  
+  .store-buttons {
+    gap: 1.5rem;
+  }
+}
+
+/* RESPONSIVE - mobile */
+@media (max-width: 768px) {
+  .hero {
+    padding: 2rem 0;
+  }
+  
+  .hero-content {
+    flex-direction: column;
+  }
+  
+  .hero-image,
+  .hero-text {
+    flex: 1 1 100%;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .hero-text {
+    margin-bottom: 3rem;
+    order: 1;
+    align-items: center; /* Center all text content on mobile */
+  }
+  
+  .hero-image {
+    order: 2;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .hero-text p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .hero-image img {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  .store-buttons {
+    justify-content:center ;
+    width: 100%;
+    gap: 1.8rem; /* Increased gap for better spacing */
+    align-self: center; /* Center with the text */
+  }
+  
+  .store-buttons img {
+    width: 180px; /* Larger buttons on mobile */
+  }
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  
+  .store-buttons {
+    display: flex;
+    flex-direction: row; /* Stack buttons on very small screens */
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .store-buttons img {
+    width: 200px; /* Even larger on small screens for better tap targets */
+  }
+}
