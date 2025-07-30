@@ -11,9 +11,10 @@ import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
 import AccountDeletionInfo from './pages/AccountDeletionInfo/AccountDeletionInfo';
 import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
 
-import BlogHome from './pages/Blog/BlogHome';
-import BlogPost from './pages/Blog/BlogPost';
-import BlogCategory from './pages/Blog/BlogCategory';
+
+import BlogHome from './pages/Blog/BlogHome/BlogHome';
+import BlogPost from './pages/Blog/BlogPost/BlogPost';
+import BlogCategory from './pages/Blog/BlogCategory/BlogCategory';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
