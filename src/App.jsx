@@ -9,9 +9,13 @@ import Footer from './components/Footer/Footer';
 import ServicesSlider from './components/Services/ServicesSlider';
 import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
 import AccountDeletionInfo from './pages/AccountDeletionInfo/AccountDeletionInfo';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions';
 
+import BlogHome from './pages/Blog/BlogHome';
+import BlogPost from './pages/Blog/BlogPost';
+import BlogCategory from './pages/Blog/BlogCategory';
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -19,7 +23,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          {}
+         
           <Route
             path="/"
             element={
@@ -33,11 +37,15 @@ function App() {
             }
           />
 
-          {/* Page de politique de confidentialité */}
+          {/* Routes du blog */}
+          <Route path="/blog" element={<BlogHome />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/blog/category/:categoryId" element={<BlogCategory />} />
+
+          {/* Pages légales */}
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/AccountDeletionInfo" element={<AccountDeletionInfo />} />
           <Route path="/terms" element={<TermsAndConditions />} />
-
         </Routes>
         <Footer />
       </Router>

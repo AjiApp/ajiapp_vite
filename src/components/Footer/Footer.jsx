@@ -1,6 +1,8 @@
+
+// src/components/Footer/Footer.jsx - Mise à jour avec le lien blog
 import React from 'react';
 import './Footer.css';
-import { Link } from 'react-router-dom'; // ✅ Ajout de Link
+import { Link } from 'react-router-dom';
 import AjiLogo from '../../assets/images/logos/logoWhite.svg';
 import EmailIcon from '../../assets/images/email-icon.svg';
 
@@ -25,8 +27,9 @@ const Footer = () => {
         <div className="footer-right">
           <p>© 2025 AJI | All rights reserved</p>
 
-          {/* ✅ Liens vers les pages */}
           <div className="footer-links">
+            <Link to="/blog" className="footer-link">Blog</Link>
+            <span> | </span>
             <Link to="/privacy-policy" className="footer-link">Privacy Policy</Link>
             <span> | </span>
             <Link to="/terms" className="footer-link">Terms &amp; Conditions</Link>

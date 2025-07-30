@@ -1,4 +1,6 @@
+// src/components/Header/Header.jsx - Mise à jour pour inclure le blog
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import { NAVIGATION_ITEMS } from '../../config/constants';
 import { scrollToElement, debounce } from '../../utils/helpers';
@@ -7,6 +9,7 @@ import ajiLogoImage from '../../assets/images/logos/aji-logo.svg';
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   // Handle scroll effect for header
   useEffect(() => {
@@ -17,6 +20,11 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location]);
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -47,16 +55,35 @@ const Header = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const handleNavClick = (href) => {
+  const handleNavClick = (item) => {
     // Close mobile menu
     setMobileMenuOpen(false);
     
-    // Scroll to element with offset for fixed header
-    scrollToElement(href, 80);
+    // If it's an external link (blog), navigate normally
+    if (item.href.startsWith('/')) {
+      return; // Let React Router handle it
+    }
+    
+    // If it's an anchor link, scroll to element
+    scrollToElement(item.href, 80);
   };
 
   const handleDownloadClick = () => {
-    scrollToElement('#download', 80);
+    if (location.pathname !== '/') {
+      // If not on home page, navigate to home first
+      window.location.href = '/#download';
+    } else {
+      scrollToElement('#download', 80);
+    }
+  };
+
+  const handleLogoClick = () => {
+    if (location.pathname !== '/') {
+      // Navigate to home
+      window.location.href = '/';
+    } else {
+      scrollToElement('#', 0);
+    }
   };
 
   return (
@@ -67,7 +94,7 @@ const Header = () => {
           <img 
             src={ajiLogoImage} 
             alt="Aji - Your guide to Morocco" 
-            onClick={() => scrollToElement('#', 0)}
+            onClick={handleLogoClick}
             style={{ cursor: 'pointer' }}
           />
         </div>
@@ -93,16 +120,26 @@ const Header = () => {
           <ul>
             {NAVIGATION_ITEMS.map((item) => (
               <li key={item.id}>
-                <a 
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(item.href);
-                  }}
-                  aria-label={`Navigate to ${item.label} section`}
-                >
-                  {item.label}
-                </a>
+                {item.href.startsWith('/') ? (
+                  <Link 
+                    to={item.href}
+                    onClick={() => handleNavClick(item)}
+                    aria-label={`Navigate to ${item.label}`}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a 
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item);
+                    }}
+                    aria-label={`Navigate to ${item.label} section`}
+                  >
+                    {item.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>

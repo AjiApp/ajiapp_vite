@@ -1,9 +1,6 @@
-// src/config/constants.js
-
-// App Store URLs
 export const STORE_URLS = {
-  appStore: "https://apps.apple.com/us/app/aji-morocco-travel-guide/id123456789", // Remplacez par vos vrais IDs
-  playStore: "https://play.google.com/store/apps/details?id=com.ajiapp.morocco" // Remplacez par votre vrai package name
+  appStore: "https://apps.apple.com/us/app/aji-morocco-travel-guide/id123456789",
+  playStore: "https://play.google.com/store/apps/details?id=com.ajiapp.morocco"
 };
 
 // Contact Information
@@ -13,18 +10,12 @@ export const CONTACT_INFO = {
   website: "https://www.ajiapp.com"
 };
 
-// Social Media Links (si applicable)
-export const SOCIAL_LINKS = {
-  facebook: "https://facebook.com/ajiapp",
-  instagram: "https://instagram.com/ajiapp",
-  twitter: "https://twitter.com/ajiapp"
-};
-
-// Navigation Menu Items
+// Navigation Menu Items - Avec le blog
 export const NAVIGATION_ITEMS = [
   { id: "whyaji", label: "Why Aji", href: "#whyaji" },
   { id: "howitworks", label: "How It Works", href: "#howitworks" },
   { id: "services", label: "Services", href: "#services" },
+  { id: "blog", label: "Blog", href: "/blog" }, // Nouvelle entrée blog
   { id: "download", label: "Download", href: "#download" },
   { id: "footer", label: "Contact", href: "#footer" }
 ];
