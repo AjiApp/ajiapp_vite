@@ -1,54 +1,65 @@
-// src/components/Hero/Hero.js
 import React from 'react';
 import './Hero.css';
+import { STORE_URLS } from '../../config/constants';
+import { handleExternalLink } from '../../utils/helpers';
 
-// IMPORTS IMAGES
-import phoneMockup from '../../assets/phone-mockup.png';   // Image du téléphone
-import appStoreImage from '../../assets/app-store.png';   // Logo App Store
-import playStoreImage from '../../assets/play-store.png'; // Logo Google Play
+// Import images using the new structure
+import phoneMockup from '../../assets/images/mockups/phone-mockup.png';
+import appStoreImage from '../../assets/images/buttons/app-store.png';
+import playStoreImage from '../../assets/images/buttons/play-store.png';
 
 const Hero = () => {
+  const handleStoreClick = (storeType) => {
+    const url = storeType === 'ios' ? STORE_URLS.appStore : STORE_URLS.playStore;
+    handleExternalLink(url);
+  };
+
   return (
-    <section className="hero">
-      {/* hero-content pour la mise en page flex sans dépendre de .container */}
+    <section className="hero" id="hero" role="banner">
       <div className="hero-content">
         
-        {/* COLONNE 1 : L'IMAGE DU TÉLÉPHONE */}
+        {/* IMAGE COLUMN */}
         <div className="hero-image">
-          <img src={phoneMockup} alt="Phone Mockup" />
+          <img 
+            src={phoneMockup} 
+            alt="AJI app interface on mobile phone showing Morocco travel features"
+            loading="eager"
+            decoding="async"
+          />
         </div>
         
-        {/* COLONNE 2 : TEXTE + BOUTONS DE TÉLÉCHARGEMENT */}
+        {/* TEXT COLUMN + DOWNLOAD BUTTONS */}
         <div className="hero-text">
           <h1>Your only guide to Morocco</h1>
-          <p>A travel guide app that helps users plan their trip in Morocco.</p>
+          <p>A comprehensive travel guide app that helps users plan their perfect trip to Morocco with ease and confidence.</p>
           
-          <div className="store-buttons">
-          <a 
-            href="https://apps.apple.com/us/app/your-app-id" 
-            className="store-link" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            <img 
-              src={appStoreImage}
-              alt="Download on the App Store" 
-              className="store-button"
-            />
-          </a>
-          <a 
-            href="https://play.google.com/store/apps/details?id=your.app.id" 
-            className="store-link" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            <img 
-              src={playStoreImage}
-              alt="Get it on Google Play" 
-              className="store-button"
-            />
-          </a>
-        </div>
+          <div className="store-buttons" role="group" aria-label="Download AJI app">
+            <button
+              onClick={() => handleStoreClick('ios')}
+              className="store-button-wrapper"
+              aria-label="Download AJI on the App Store"
+            >
+              <img 
+                src={appStoreImage}
+                alt="Download on the App Store" 
+                loading="eager"
+                decoding="async"
+              />
+            </button>
+            
+            <button
+              onClick={() => handleStoreClick('android')}
+              className="store-button-wrapper"
+              aria-label="Get AJI on Google Play"
+            >
+              <img 
+                src={playStoreImage}
+                alt="Get it on Google Play" 
+                loading="eager"
+                decoding="async"
+              />
+            </button>
+          </div>
         </div>
       </div>
     </section>

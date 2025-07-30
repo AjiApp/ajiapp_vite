@@ -1,12 +1,11 @@
-/* src/components/Hero/Hero.css */
-
+/* Hero Section - Optimized Structure */
 .hero {
   width: 100%;
-  padding: 6rem 0 4rem;
+  padding: 8rem 0 4rem; /* Account for fixed header */
   overflow-x: hidden;
+  position: relative;
 }
 
-/* hero-content uses flex for 2 columns */
 .hero-content {
   display: flex;
   flex-wrap: wrap;
@@ -15,6 +14,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  gap: 3rem;
 }
 
 /* IMAGE COLUMN */
@@ -23,6 +23,7 @@
   text-align: center;
   position: relative;
   max-width: 500px;
+  margin: 0 auto;
 }
 
 .hero-image img {
@@ -31,167 +32,262 @@
   height: auto;
   display: block;
   margin: 0 auto;
-}
-
-/* TEXT COLUMN + BUTTONS */
-.hero-text {
-  flex: 1 1 45%;
-  padding-right: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Align text to left but will be centered on mobile */
-}
-
-.hero-text h1 {
-  font-size: 2.5rem;
-  font-weight: 900;
-  margin-bottom: 6.5rem;
-  line-height: 1.2;
-  color: #333;
-}
-
-.hero-text p {
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #555;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-  margin-top: 20px;
-}
-
-/* Download buttons - enlarged and centered with text on mobile */
-.store-buttons {
-  display: flex;
-  gap: 2rem; /* Increased gap between buttons */
-  flex-wrap: wrap;
-  align-self: flex-start; /* Align with text on desktop */
-  
-}
-
-.store-buttons a {
-  display: block;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
   transition: transform 0.3s ease;
 }
 
-.store-buttons a:hover {
-  transform: scale(1.05);
+.hero-image img:hover {
+  transform: scale(1.02);
 }
 
-.store-buttons img {
-  width: 220px; /* Increased from 190px to make buttons larger */
+/* TEXT COLUMN */
+.hero-text {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.hero-text h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--text-primary, #333);
+  margin: 0;
+  background: linear-gradient(135deg, #333 0%, #555 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-text p {
+  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+  font-weight: 500;
+  color: var(--text-secondary, #555);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 500px;
+}
+
+/* STORE BUTTONS */
+.store-buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.store-button-wrapper {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.store-button-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(139, 24, 26, 0.1) 0%, rgba(139, 24, 26, 0.2) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 12px;
+}
+
+.store-button-wrapper:hover::before {
+  opacity: 1;
+}
+
+.store-button-wrapper:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.store-button-wrapper:active {
+  transform: translateY(-1px) scale(1.01);
+}
+
+.store-button-wrapper img {
+  width: 200px;
   max-width: 100%;
   height: auto;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15)); /* Added shadow for better visibility */
+  display: block;
+  border-radius: 12px;
+  transition: all 0.3s ease;
 }
 
-/* Large screens */
+/* Focus states for accessibility */
+.store-button-wrapper:focus {
+  outline: 3px solid var(--primary-color, #8B181A);
+  outline-offset: 3px;
+}
+
+/* Loading states */
+.store-button-wrapper[aria-busy="true"] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Enhanced visual hierarchy */
 @media (min-width: 1400px) {
+  .hero {
+    padding: 10rem 0 6rem;
+  }
+  
   .hero-content {
     max-width: 1400px;
+    gap: 4rem;
   }
   
-  .hero-text h1 {
-    font-size: 4rem;
-  }
-  
-  .store-buttons img {
-    width: 240px; /* Even larger on big screens */
+  .store-button-wrapper img {
+    width: 220px;
   }
 }
 
-/* Medium screens */
-@media (max-width: 992px) {
-  .hero-text h1 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+/* Large desktop adjustments */
+@media (min-width: 1200px) {
+  .hero-content {
+    gap: 4rem;
   }
   
   .hero-text {
-    padding-right: 1rem;
-  }
-  
-  .store-buttons img {
-    width: 200px; /* Still fairly large on medium screens */
-  }
-  
-  .store-buttons {
-    gap: 1.5rem;
+    gap: 2.5rem;
   }
 }
 
-/* RESPONSIVE - mobile */
+/* Tablet responsiveness */
+@media (max-width: 992px) {
+  .hero {
+    padding: 6rem 0 3rem;
+  }
+  
+  .hero-content {
+    gap: 2rem;
+  }
+  
+  .hero-text {
+    gap: 1.5rem;
+  }
+  
+  .store-button-wrapper img {
+    width: 180px;
+  }
+}
+
+/* Mobile responsiveness */
 @media (max-width: 768px) {
   .hero {
-    padding: 2rem 0;
+    padding: 5rem 0 2rem;
   }
   
   .hero-content {
     flex-direction: column;
+    text-align: center;
+    gap: 2rem;
   }
   
   .hero-image,
   .hero-text {
     flex: 1 1 100%;
-    text-align: center;
-    padding: 0;
-    margin: 0;
   }
   
   .hero-text {
-    margin-bottom: 3rem;
     order: 1;
-    align-items: center; /* Center all text content on mobile */
+    align-items: center;
+    text-align: center;
   }
   
   .hero-image {
     order: 2;
   }
   
-  .hero-text h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
+  .hero-text h1,
   .hero-text p {
-    font-size: 1rem;
-    margin-bottom: 2rem;
     text-align: center;
-  }
-  
-  .hero-image img {
-    max-width: 90%;
-    margin: 0 auto;
   }
   
   .store-buttons {
-    justify-content:center ;
+    justify-content: center;
     width: 100%;
-    gap: 1.8rem; /* Increased gap for better spacing */
-    align-self: center; /* Center with the text */
   }
   
-  .store-buttons img {
-    width: 180px; /* Larger buttons on mobile */
+  .store-button-wrapper img {
+    width: 170px;
   }
 }
 
-/* Small screens */
+/* Small mobile */
 @media (max-width: 480px) {
-  .hero-text h1 {
-    font-size: 2rem;
+  .hero {
+    padding: 4rem 0 2rem;
+  }
+  
+  .hero-content {
+    padding: 0 1rem;
+    gap: 1.5rem;
+  }
+  
+  .hero-text {
+    gap: 1.5rem;
   }
   
   .store-buttons {
-    display: flex;
-    flex-direction: row; /* Stack buttons on very small screens */
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
   }
   
-  .store-buttons img {
-    width: 200px; /* Even larger on small screens for better tap targets */
+  .store-button-wrapper {
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .store-button-wrapper img {
+    width: 100%;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .hero-image img,
+  .store-button-wrapper,
+  .store-button-wrapper img {
+    transition: none;
+  }
+  
+  .hero-image img:hover {
+    transform: none;
+  }
+  
+  .store-button-wrapper:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .hero-text h1 {
+    background: none;
+    background-clip: unset;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    color: #000;
+  }
+  
+  .store-button-wrapper {
+    border: 2px solid #000;
+  }
+  
+  .store-button-wrapper:focus {
+    outline-color: #000;
   }
 }

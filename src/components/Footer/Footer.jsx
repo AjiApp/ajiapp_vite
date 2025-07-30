@@ -1,8 +1,8 @@
 import React from 'react';
 import './Footer.css';
 import { Link } from 'react-router-dom'; // ✅ Ajout de Link
-import AjiLogo from '../../assets/logoWhite.svg';
-import EmailIcon from '../../assets/email-icon.svg';
+import AjiLogo from '../../assets/images/logos/logoWhite.svg';
+import EmailIcon from '../../assets/images/email-icon.svg';
 
 const Footer = () => {
   return (

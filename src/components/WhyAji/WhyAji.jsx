@@ -1,34 +1,85 @@
 import React from 'react';
 import './WhyAji.css';
-// Use relative import instead of absolute path
-import phone from '../../assets/phone.svg';
+import { scrollToElement } from '../../utils/helpers';
+
+// Import using new structure
+import phoneImage from '../../assets/images/mockups/phone.svg';
 
 const WhyAji = () => {
+  const features = [
+    "Visa guidance and requirements",
+    "Flight booking assistance", 
+    "eSIM connectivity solutions",
+    "Tourist sites and activities discovery",
+    "Local accommodation booking",
+    "Cultural insights and tips"
+  ];
+
+  const handleDownloadClick = () => {
+    scrollToElement('#download', 80);
+  };
+
   return (
-    <section id="whyaji" className="why-aji-section">
-      {/* Conteneur interne contrôlable */}
+    <section 
+      className="why-aji-section" 
+      id="whyaji" 
+      role="main"
+      aria-labelledby="why-aji-title"
+    >
       <div className="why-aji-container">
-        {/* Titre principal */}
-        <h2 className="why-aji-title">WHY AJI?</h2>
+        
+        {/* Main Title */}
+        <h2 id="why-aji-title" className="why-aji-title">
+          WHY AJI?
+        </h2>
 
-        {/* Sous-titre */}
-        <h3 className="why-aji-subtitle">Your all-in travel guide to Morocco</h3>
+        {/* Subtitle */}
+        <h3 className="why-aji-subtitle">
+          Your all-in-one travel guide to Morocco
+        </h3>
 
-        {/* Description / texte complémentaire */}
-        <p className="why-aji-subdesc">
-          Aji is an all in travel guide to Morocco. 
-          Want to learn how to get your visa? book your flight? 
-          buy an e-sim? or discover touristic sites and activities during your stay in Morocco?
-          AJI is here to help you plan all aspects of your next trip to Morocco. 
-          Download AJI now! 
-        </p>
+        {/* Description */}
+        <div className="why-aji-content">
+          <p className="why-aji-description">
+            AJI is a comprehensive travel companion designed specifically for Morocco. 
+            Whether you're planning your first visit or returning to explore more, 
+            AJI provides everything you need in one convenient app.
+          </p>
+          
+          {/* Features List */}
+          <div className="features-grid">
+            <h4 className="features-title">What AJI offers:</h4>
+            <ul className="features-list" role="list">
+              {features.map((feature, index) => (
+                <li key={index} className="feature-item" role="listitem">
+                  <span className="feature-icon" aria-hidden="true">✓</span>
+                  <span className="feature-text">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* Images en bas, empilées en colonne */}
+          {/* Call to Action */}
+          <div className="why-aji-cta">
+            <p className="cta-text">Ready to explore Morocco?</p>
+            <button 
+              onClick={handleDownloadClick}
+              className="cta-button"
+              aria-label="Download AJI app now"
+            >
+              Download AJI Now
+            </button>
+          </div>
+        </div>
+
+        {/* Phone Image */}
         <div className="phone-images">
           <img 
-            src={phone} 
-            alt="Aji App Features" 
+            src={phoneImage} 
+            alt="AJI app interface showcasing Morocco travel features and user-friendly design"
             className="phone-image"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>
